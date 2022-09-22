@@ -1,0 +1,11 @@
+{
+  "name": "Docker Logs Forwarder",
+  "slug": "docker_logs_forwarder",
+  "version": "main",
+  "description": "Forward logs from Docker to a remote service",
+  "arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],
+  "startup": "application",
+  "boot": "auto",
+  "init": false,
+  "docker_api": true
+}
