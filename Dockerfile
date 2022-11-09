@@ -6,6 +6,7 @@ ARG VERSION=0.1.3
 ENV VERSION=${VERSION}
 COPY arch.sh .
 COPY get.sh .
+RUN chmod +x arch.sh get.sh
 
 RUN ./get.sh
 
