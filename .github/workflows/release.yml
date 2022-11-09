@@ -34,7 +34,7 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y jq
         set -x
-        TAG=$(jq '.version' < docker_logs_forwarder/config.json)
+        TAG=$(jq '.version' < config.json)
         ! docker manifest inspect ghcr.io/pbkhrv/docker_logs_forwarder-hass-addons-docker_logs_forwarder-${{ matrix.arch }}:$TAG > /dev/null
 
     - name: Inject slug/short variables
