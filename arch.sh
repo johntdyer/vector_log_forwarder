@@ -6,6 +6,15 @@ if [ "$ARCH" == "aarch64" ]
 then
   echo arm64
   exit
+elif [ "$ARCH" == "armv7" ]
+then
+  echo armv6
+  exit
+elif [ "$ARCH" == "armhf" ]
+then
+  echo armv6
+  exit
+  exit
 elif [ "$ARCH" == "amd64" ] 
 then
   echo x86_64
