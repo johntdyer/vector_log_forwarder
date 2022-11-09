@@ -1,0 +1,59 @@
+# This is nearly identical to the builds on PRs, but doesn't specify
+# `--version` to builder so each addon gets it's own version.
+name: Create new docker_logs_forwarder addon release
+
+on:
+  push:
+    branches:
+      - next
+    tags:
+      - '2*'
+
+env:
+  REGISTRY: ghcr.io
+
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build_docker_logs_forwarder:
+    name: Build docker_logs_forwarder addon
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        arch: [armhf, armv7, aarch64, amd64, i386]
+
+    steps:
+    - name: Checkout the repository
+      uses: actions/checkout@v2
+
+    - name: Make sure tag doesn't exist
+      run: |
+        set -e
+        sudo apt-get update
+        sudo apt-get install -y jq
+        set -x
+        TAG=$(jq '.version' < docker_logs_forwarder/config.json)
+        ! docker manifest inspect ghcr.io/pbkhrv/docker_logs_forwarder-hass-addons-docker_logs_forwarder-${{ matrix.arch }}:$TAG > /dev/null
+
+    - name: Inject slug/short variables
+      uses: rlespinasse/github-slug-action@v4
+
+    - name: Login to Packages Container registry
+      uses: docker/login-action@v1
+      with:
+        registry: ${{ env.REGISTRY }}
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Build docker_logs_forwarder image
+      uses: home-assistant/builder@master
+      if: github.event.pull_request.head.repo.full_name != github.repository
+      with:
+        args: |
+          --${{ matrix.arch }} \
+          --docker-hub $REGISTRY \
+          --image ${{ github.repository}}-docker_logs_forwarder-{arch} \
+          --no-latest \
+          --target docker_logs_forwarder
