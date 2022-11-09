@@ -6,7 +6,7 @@ if [ "$ARCH" == "aarch64" ]
 then
   echo arm64
   exit
-elif [ "$ARCH" == "armv7" ]
+elif [ "$ARCH" == "armv7l" ]
 then
   echo armv6
   exit
