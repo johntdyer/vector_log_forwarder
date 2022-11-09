@@ -1,9 +1,12 @@
 ARG BUILD_FROM=ghcr.io/home-assistant/amd64-base:3.15
-ARG VERSION=0.1.3
 
 FROM alpine:3.15 AS builder
 RUN apk add wget
+ARG VERSION=0.1.3
+ENV VERSION=${VERSION}
 COPY arch.sh .
+COPY get.sh .
+
 RUN ./get.sh
 
 FROM $BUILD_FROM

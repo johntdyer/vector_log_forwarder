@@ -1,4 +1,6 @@
 #!/bin/sh
 
-wget https://github.com/deviantintegral/docker-log-forwarder/releases/download/v$VERSION/docker-log-forwarder_$VERSION_Linux_\$(./arch.sh).tar.gz
-tar xzvf docker-log-forwarder_0.1.2_Linux_\$(./arch.sh).tar.gz
+ARCH=$(./arch.sh)
+
+wget https://github.com/deviantintegral/docker-log-forwarder/releases/download/v$VERSION/docker-log-forwarder_$VERSION\_Linux_$ARCH\.tar.gz
+tar xzvf docker-log-forwarder_$VERSION\_Linux_$ARCH\.tar.gz
