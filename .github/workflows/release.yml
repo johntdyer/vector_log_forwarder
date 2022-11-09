@@ -56,4 +56,4 @@ jobs:
           --docker-hub $REGISTRY \
           --image ${{ github.repository}}-docker_logs_forwarder-{arch} \
           --no-latest \
-          --target docker_logs_forwarder
+          --target .

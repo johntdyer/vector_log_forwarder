@@ -46,7 +46,7 @@ jobs:
           --image ${{ github.repository}}-docker_logs_forwarder-{arch} \
           --version $GITHUB_REF_SLUG \
           --no-latest \
-          --target docker_logs_forwarder
+          --target .
 
     - name: Build and push docker_logs_forwarder image
       uses: home-assistant/builder@master
@@ -58,4 +58,4 @@ jobs:
           --image ${{ github.repository}}-docker_logs_forwarder-{arch} \
           --version $GITHUB_REF_SLUG \
           --no-latest \
-          --target docker_logs_forwarder
+          --target .
