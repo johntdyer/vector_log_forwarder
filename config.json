@@ -1,7 +1,9 @@
 {
   "name": "Docker Logs Forwarder",
+  "image": "ghcr.io/deviantintegral/docker_logs_forwarder_addon-docker_logs_forwarder-{arch}",
   "slug": "docker_logs_forwarder",
-  "version": "main",
+  "description": "A Home Assistant OS container to forward logs to another service",
+  "version": "next",
   "description": "Forward logs from Docker to a remote service",
   "arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],
   "startup": "application",
