@@ -19,3 +19,14 @@ Why is this needed? HAOS [doesn't allow changes to daemon.json](https://github.c
 * Logs are still written to the HAOS host. This addon should only be used to send logs to a remote host. Ship logs to hosts running on SD cards at your own peril.
 * When the addon starts, it only "tails" the logs of existing containers. In the case of a complete system reboot, logs will be missed until the addon starts.
 * There's currently no support for TLS. PRs at https://github.com/deviantintegral/docker-log-forwarder are welcome!
+
+## Release Process
+
+* The next branch represents the upcoming version of these addons.
+* `config.json` will contain the version numbers of the previously set addon versions, but will have different code.
+* When `next` is ready to be tagged for a release:
+  1. Create a pull request against `main`, bumping the versions of each `config.json`.
+  2. When the pull request has been approved, create a date-based tag such as `2022.12.01.0` on the last commit of the pull request. This will build docker containers with the version numbers in `config.json`.
+  3. Merge the PR into `main` to actually promote the release to end users. Note the new version(s) in the commit message.
+    - Note we do not tag `main` in git, since each addon has it's own version number.
+  4. Create a new branch off of `main` setting the addon versions back to `next`. Create a PR to merge `main` into `next` to reconcile the branches.
