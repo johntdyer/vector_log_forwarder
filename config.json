@@ -9,5 +9,11 @@
   "startup": "application",
   "boot": "auto",
   "init": false,
-  "docker_api": true
+  "docker_api": true,
+  "options": {
+    "log_destination_address": "graylog.lan:5555"
+  },
+  "schema": {
+    "log_destination_address": "str"
+  }
 }

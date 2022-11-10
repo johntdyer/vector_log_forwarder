@@ -9,8 +9,9 @@ Why is this needed? HAOS [doesn't allow changes to daemon.json](https://github.c
 ## Installation
 
 1. Add this addon repository and install the addon.
-2. Set the `log_host_port` setting to your log input, such as `graylog.lan:5555`.
-3. Start the addon and watch logs fly!
+2. **DISABLE PROTECTION MODE** in the addon Info page. Otherwise, the addon will not be able to bind to the docker socket.
+3. Set the `log_host_port` setting to your log input, such as `graylog.lan:5555`.
+4. Start the addon and watch logs fly!
 
 ## Limitations
 
