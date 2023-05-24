@@ -37,9 +37,10 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y jq
         set -x
-        TAG=$(jq '.version' < config.json)
+        TAG=$(cat config.yaml | grep version | awk '{print $2}')
         ! docker manifest inspect ghcr.io/pbkhrv/docker_logs_forwarder-hass-addons-docker_logs_forwarder-${{ matrix.arch }}:$TAG > /dev/null
 
+# jq '.version' < config.json)
     - name: Inject slug/short variables
       uses: rlespinasse/github-slug-action@v4
 
