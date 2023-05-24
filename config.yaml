@@ -1,0 +1,24 @@
+---
+name: Vector docker Logs Forwarder
+version: 0.3.3
+slug: vector_docker_logs_forwarder
+apparmor: true
+init: false
+// watchdog: http://[HOST]:[PORT:3031]/healthz
+map:
+  - share:rw
+description: Vector
+arch:
+  - armhf
+  - armv7
+  - aarch64
+  - amd64
+  - i386
+startup: application
+host_network: true
+boot: auto
+docker_api: true
+options:
+  loki_server_address: "http://192.168.100.8:3100"
+schema:
+    loki_server_address: "str"

@@ -1,6 +1,7 @@
 #!/bin/sh
 
-ARCH=$(./arch.sh)
+ARCH=x86_64 #$(./arch.sh)
 
-wget https://github.com/deviantintegral/docker-log-forwarder/releases/download/v$VERSION/docker-log-forwarder_$VERSION\_Linux_$ARCH\.tar.gz
-tar xzvf docker-log-forwarder_$VERSION\_Linux_$ARCH\.tar.gz
+mkdir -p vector &&
+  curl -v -sSfL --proto '=https' --tlsv1.2 https://packages.timber.io/vector/$VERSION/vector-$VERSION-$ARCH-unknown-linux-musl.tar.gz |
+  tar xzf - -C vector --strip-components=2

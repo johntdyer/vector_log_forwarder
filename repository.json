@@ -1,5 +1,5 @@
 {
   "name": "Docker Logs Forwarder Home Assistant add-on",
-  "url": "https://github.com/deviantintegral/docker_logs_forwarder_addon",
-  "maintainer": "Andrew Berry"
+  "url": "https://github.com/johntdyer/vector_log_forwarder",
+  "maintainer": "John Dyer"
 }

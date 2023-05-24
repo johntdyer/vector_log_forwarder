@@ -1,0 +1,44 @@
+[api]
+enabled = true
+address = "0.0.0.0:18686"
+
+[sources.src_docker]
+  # REQUIRED
+  type = "docker_logs" # must be: "docker"
+  # OPTIONAL
+  # include_images = ["my_image_name", "httpd", "redis"] # example, no default
+  # include_labels = ["label_key1=label_value1", "label_key2=label_value2"] # example
+
+  # Print parsed logs to stdout
+# [sinks.print]
+# type = "console"
+# inputs = ["docker"]
+# encoding.codec = "json"
+
+[transforms.modify]
+  type         = "remap"
+  inputs       = ["src_docker"]
+  drop_on_error = false
+  source = '''
+  . |= parse_grok!(.message, "%{GREEDYDATA:message}")
+  .timestamp = parse_timestamp!(.timestamp , format: "%s")
+  '''
+
+[transforms.modify]
+  type = "remap"
+  inputs = ["src_docker"]
+  source = '''
+    del(.host)
+    del(.source_type)
+    del(.port)
+    .timestamp = now()
+  '''
+
+[sinks.sink_temp]
+  type = "loki"
+  inputs = [ "docker" ]
+  endpoint = "http://192.168.100.8:3100"
+  out_of_order_action = "rewrite_timestamp"
+  encoding.codec = "json"
+  labels = {app="docker"}
+
