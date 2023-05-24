@@ -19,7 +19,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        arch: [armhf, armv7, aarch64, amd64, i386]
+        arch: [ amd64 ]
+        # armhf, armv7, aarch64,, i386]
 
     steps:
     - name: Inject slug/short variables
