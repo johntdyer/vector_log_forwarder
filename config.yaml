@@ -1,7 +1,7 @@
 ---
-name: Vector docker Logs Forwarder
+name: Vector Logs Forwarder
 version: 0.3.3
-slug: vector_docker_logs_forwarder
+slug: vector_logs_forwarder
 apparmor: true
 init: false
 // watchdog: http://[HOST]:[PORT:3031]/healthz
