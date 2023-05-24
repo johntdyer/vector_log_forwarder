@@ -19,7 +19,7 @@ RUN chmod +x vector
 
 # Run script
 COPY run.sh /
-COPY vector.toml /
+# COPY vector.toml /
 RUN chmod a+x /run.sh
 
 CMD [ "/run.sh" ]

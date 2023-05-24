@@ -44,7 +44,7 @@ jobs:
           --test \
           --${{ matrix.arch }} \
           --docker-hub $REGISTRY \
-          --image ${{ github.repository}}-{arch} \
+          --image ${{ github.repository}}-docker_logs_forwarder-{arch} \
           --version $GITHUB_REF_SLUG \
           --no-latest \
           --target .
