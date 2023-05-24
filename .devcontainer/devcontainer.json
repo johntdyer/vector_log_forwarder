@@ -9,8 +9,7 @@
   },
   "extensions": ["timonwong.shellcheck", "esbenp.prettier-vscode"],
   "mounts": [
-    "type=volume,target=/var/lib/docker" ,
-      "source=./share/vector/vector.toml,target=/share/vector/vector.toml,type=bind,consistency=cached"
+    "type=volume,target=/var/lib/docker"
   ],
   "settings": {
     "terminal.integrated.profiles.linux": {
