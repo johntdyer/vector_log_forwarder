@@ -2,12 +2,12 @@
 # `--version` to builder so each addon gets it's own version.
 name: Create new docker_logs_forwarder addon release
 
-on:
-  push:
-    branches:
-      - next
-    tags:
-      - '2*'
+# on:
+#   push:
+#     branches:
+#     #   - next
+    # tags:
+    #   - '2*'
 
 env:
   REGISTRY: ghcr.io
